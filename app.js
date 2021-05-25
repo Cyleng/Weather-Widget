@@ -3,7 +3,7 @@ const forecastDays=document.getElementsByClassName("day");
 const dayString={1:"Monday",2:"Tuesday",3:"Wednesday",4:"Thursday",5:"Friday",6:"Saturday",7:"Sunday",}
 
 const getCurrentWeather=async(location)=>{
-    const URL="http://api.openweathermap.org/data/2.5/weather?"+location+"&appid=ada6c43eae0551cb808f5a77926947d4"
+    const URL="https://api.openweathermap.org/data/2.5/weather?"+location+"&appid=ada6c43eae0551cb808f5a77926947d4"
     const response = await fetch(URL);
     const data = await response.json();
     if (response.status != 200){
@@ -14,7 +14,7 @@ const getCurrentWeather=async(location)=>{
 }
 
 const getForecastWeather=async(location)=>{
-    const URL="http://api.openweathermap.org/data/2.5/forecast?"+location+"&appid=ada6c43eae0551cb808f5a77926947d4"
+    const URL="https://api.openweathermap.org/data/2.5/forecast?"+location+"&appid=ada6c43eae0551cb808f5a77926947d4"
     const response = await fetch(URL);
     const data = await response.json();
     if (response.status != 200){
@@ -32,7 +32,7 @@ function renderCurrent(data){
     currentWeather[0].innerHTML="";
     currentWeather[0].insertAdjacentHTML("afterbegin",`
         <h2>Current Conditions</h2>
-        <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" />
+        <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" />
         <div class="current">
             <div class="temp">${Math.round(data.main.temp-273)}℃</div>
             <div class="condition">${data.weather[0].description}</div>
@@ -72,7 +72,7 @@ function renderForecast(date){
         //console.log(newArray[index]);
         forecastDays[i].insertAdjacentHTML("afterbegin",`
             <h3>${dayString[weatherDay]}</h3>
-            <img src="http://openweathermap.org/img/wn/${newArray[index].weather[0].icon}@2x.png" />
+            <img src="https://openweathermap.org/img/wn/${newArray[index].weather[0].icon}@2x.png" />
             <div class="description">${newArray[index].weather[0].description}</div>
             <div class="temp">
                 <span class="high">${Math.round(maxTemp-273)}℃</span>/<span class="low">${Math.round(minTemp-273)}℃</span>
